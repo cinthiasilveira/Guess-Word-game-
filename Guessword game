@@ -1,0 +1,39 @@
+import random
+import time
+
+potential_words = ('sleep','banjo','shoes','haiku','peach')
+word = random.choice(potential_words)
+correct = 0
+current_word = ["_", "_","_", "_","_"]
+letter_guess = ''
+word_guess = ''
+store_letter = ''
+count = 1
+limit = 8
+
+print('begin game ')
+time.sleep(2)
+print('You have 6 attempts at guessing letters in a word')
+time.sleep(2)
+print('when word complete press enter to see if you won')
+time.sleep(2)
+print('Let\'s begin!')
+
+while count < limit:
+    letter_guess = input('Guess a letter: ')
+    letter_guess = str(letter_guess)
+    if correct > 3:# checks to see if playwer won game
+        print("you won") # only print if game won
+        break# end loop 
+    if letter_guess in word:
+        indexword = word.index(letter_guess)
+        current_word[indexword] = letter_guess
+        print('yes!')
+        print(current_word)
+        correct += 1
+    else:
+        print('wrong You have', str(limit - count), 'tries left!')
+        count += 1
+
+print("game over")
+print(word)
